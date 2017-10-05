@@ -3,7 +3,7 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String[] args){
-        String expresion = "(34)";
+        String expresion = "(3+10)-2*(1-4)";
         String a= PostfixTranslation(expresion);
         System.out.println(a);
     }
@@ -30,30 +30,33 @@ public class Main {
         String postfix = "";
         Stack st= new Stack();
         char[] str = expresion.toCharArray();
-        for(int i=0;i<str.length;i++){
-            x=Priorities(str[i]);
-            if (x==0||x==3){
+        for(int i=0;i<str.length;i++) {
+            x = Priorities(str[i]);
+            if (x == 0 || x == 3) {
                 postfix += str[i];
+                continue;
             }
-            if(x==1){
+            if (x == 1) {
                 st.push(str[i]);
+                continue;
             }
-            if(x==2) {
-                char symbol =(char)st.pop();
-                while(symbol!='(' && !st.empty()) {
+            if (x == 2) {
+                char symbol = (char) st.pop();
+                while (symbol != '(' && st.empty() == false) {
                     postfix += symbol;
-                    symbol= (char)st.pop();
+                    symbol = (char) st.pop();
                 }
+                continue;
             }
-            if(x==4||x==5) {
-                while (Priorities((char)st.peek())>=x){
-                    postfix +=(char)st.pop();
+            if (x == 4 || x == 5) {
+                while (st.empty()==false && Priorities((char) st.peek()) >= x) {
+                    postfix += (char) st.pop();
                 }
                 st.push(str[i]);
             }
-            while (!st.empty()){
-                postfix+=(char)st.pop();
-            }
+        }
+        while (!st.empty()){
+            postfix+=(char)st.pop();
         }
         return postfix;
     }
