@@ -1,4 +1,14 @@
 public class Main {
+
+    public static void main(String[] args) {
+        FizzBuzz();
+
+        System.out.println(IsSimple(20));
+
+        String mas = "((((())(";
+        System.out.println(IsCorrect(mas));
+    }
+
     public static void FizzBuzz() {
         for (int i = 1; i <= 100; i++) {
             if (i % 15 == 0) {
@@ -44,14 +54,5 @@ public class Main {
         }
 
         return summa==0;
-    }
-
-    public static void main(String[] args) {
-        FizzBuzz();
-
-        System.out.println(IsSimple(20));
-
-        String mas = "((((())(";
-        System.out.println(IsCorrect(mas));
     }
 }
