@@ -4,6 +4,15 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static void main(String[] args) {
+        int[] array = InputArray();
+        System.out.println("Максимальное: " + FindMaximum(array));
+        System.out.println("Минимальное " + FindMinimum(array));
+        System.out.println("Среднее арефметическое: " + FindAverage(array));
+        System.out.println("Медиана: " + FindMedian(array));
+        System.out.println("Среднее геометрическое: " + FindGeometricAverage(array));
+    }
+
     public static int FindMaximum(int[] array) {
         int max = Integer.MIN_VALUE;
 
@@ -73,11 +82,15 @@ public class Main {
                 product = product * i;
             }
         }
-        if(product<0)
+        if(product<0&&array.length==0)
         {
             return 0;
         }
-        return (double) Math.pow(product, 1d / array.length);
+        if(product<0&&array.length!=0)
+        {
+            return -(Math.pow(Math.abs(product), 1d / array.length));
+        }
+        return Math.pow(product, 1d / array.length);
     }
 
     public static int[] InputArray() {
@@ -105,14 +118,5 @@ public class Main {
                 System.out.println("Ошибка,введено не числовое значение!");
             }
         }
-    }
-
-    public static void main(String[] args) {
-        int[] array = InputArray();
-        System.out.println("Максимальное: " + FindMaximum(array));
-        System.out.println("Минимальное " + FindMinimum(array));
-        System.out.println("Среднее арефметическое: " + FindAverage(array));
-        System.out.println("Медиана: " + FindMedian(array));
-        System.out.println("Среднее геометрическое: " + FindGeometricAverage(array));
     }
 }
