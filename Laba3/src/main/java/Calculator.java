@@ -1,13 +1,9 @@
+package main.java;
 
 import java.util.Stack;
 
-public class Main {
-    public static void main(String[] args) {
-        String expresion = "(4*5)-(56-20)";
-        double a = Calculate(expresion);
-        System.out.println(a);
-    }
 
+public class Calculator {
     public static double Calculate(String expresion) {
         String postfix = GetExpression(expresion);
         double rezult = Counting(postfix);
@@ -137,7 +133,7 @@ public class Main {
                 st.push(str[i]);//заносим новый оператор в строку
             }
         }
-        while (!st.empty()) {//забираем последнии символы из стека 
+        while (!st.empty()) {//забираем последнии символы из стека
             postfix += (char) st.pop() + " ";
         }
         return postfix;//возвращаем выражение в постфиксной записи
