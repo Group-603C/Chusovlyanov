@@ -124,6 +124,7 @@ public class Calculator {
                     postfix += symbol + " ";//записываем операции в строку
                     symbol = (char) st.pop();
                 }
+
                 continue;
             }
             if (x == 4 || x == 5) {//если  +-/*

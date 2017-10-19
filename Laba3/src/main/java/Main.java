@@ -23,7 +23,7 @@ public class Main {
                 summa--;
                 number++;
             }
-
+ 
             if (summa < 0) {
                 return false;
             }
