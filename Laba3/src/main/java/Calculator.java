@@ -17,7 +17,6 @@ public class Calculator {
         Stack stack = new Stack();
         int priority;
         for (String i : arrayList) {
-<<<<<<< HEAD
             priority = GetPriority(i);
 
             if (priority == 0) {
@@ -25,7 +24,7 @@ public class Calculator {
             }
 
             else if (priority == 1) {
-                stack.push(i);//добавляем к стек
+                stack.push(i);
             }
 
             else if (priority == 2) {
@@ -37,56 +36,21 @@ public class Calculator {
                 continue;
             }
 
-            else if (IsOperator(i)) {//если  +-/*
+            else if (IsOperator(i)) {
                 while (!stack.empty() && GetPriority((String) stack.peek()) >= priority) {
-                    result.add((String) stack.pop());//извлекаем из стека в строку
+                    result.add((String) stack.pop());
                 }
-                stack.push(i);//заносим новый оператор в строку
+                stack.push(i);
             }
         }
 
-        while (!stack.empty()) {//забираем последнии символы из стека
+        while (!stack.empty()) {
             result.add((String) stack.pop());
         }
 
-        return result;//возвращаем выражение в постфиксной записи
+        return result;
     }
 
-=======
-            priority = GetPriority(i);//находим приоритет символа
-
-            if (priority == 0) {//Если символ цифра или равно
-                result.add(i);
-            }
-
-            else if (priority == 1) { //если скобка открывается
-                stack.push(i);//добавляем к стек
-            }
-
-            else if (priority == 2) {//если скобка закрывается
-                String symbol = (String) stack.pop();
-                while (GetPriority(symbol)!=1 && !stack.empty()) { //пока не окрывающияся скобка или не конец стека
-                    result.add(symbol);//записываем операции в строку
-                    symbol = (String) stack.pop();
-                }
-            }
-
-            else if (IsOperator(i)) {//если  +-/*
-                while (!stack.empty() && GetPriority((String) stack.peek()) >= priority) {//пока не конец стека и приоритет оператора в стеке больше оператора в строке
-                    result.add((String) stack.pop());//извлекаем из стека в строку
-                }
-                stack.push(i);//заносим новый оператор в строку
-            }
-        }
-
-        while (!stack.empty()) {//забираем последнии символы из стека
-            result.add((String) stack.pop());
-        }
-
-        return result;//возвращаем выражение в постфиксной записи
-    }
-
->>>>>>> b360a9c8a03a0fd6fc229eeb8faebb87ab1e58b2
     private static ArrayList StringtoList(String ch) {
         ArrayList<String> result = new ArrayList();
         char[] input = ch.toCharArray();
@@ -95,8 +59,8 @@ public class Calculator {
                 continue;
             } else if (Character.isDigit(input[i])) {
                 String b = "";
-                while (!IsDelimeter(String.valueOf(input[i])) && !IsOperator(String.valueOf(input[i]))) {//пока не разделитель
-                    b += input[i];//собираем число
+                while (!IsDelimeter(String.valueOf(input[i])) && !IsOperator(String.valueOf(input[i]))) {
+                    b += input[i];
                     i++;
                     if (i == input.length) {
                         break;
@@ -117,14 +81,14 @@ public class Calculator {
 
         for (String i : postfix) {
 
-            if (sNumber(i)) { //если символ - цифра, то читаем все число и записываем на вершину стека
-                stack.push(Double.parseDouble((i)));//записываем в стек
+            if (sNumber(i)) {
+                stack.push(Double.parseDouble((i)));
 
-            } else if (IsOperator(i)) { //если символ -оператор
-                //берем числа из стека
+            } else if (IsOperator(i)) {
+
                 double a = (double) stack.pop();
                 double b = (double) stack.pop();
-                //выполняем операции над ними
+
                 switch (i) {
                     case "+":
                         rezult = b + a;
@@ -139,42 +103,34 @@ public class Calculator {
                         rezult = b / a;
                         break;
                 }
-                stack.push(rezult);//результат возвращаем в стек
+                stack.push(rezult);
             }
         }
-        return (double) stack.peek();//возвращаем результат всех вычислений
+        return (double) stack.peek();
     }
 
-    private static boolean IsDelimeter(String ch) { //метод возвращает true,если проверяемый символ разделитель
+    private static boolean IsDelimeter(String ch) { 
         if (("()".indexOf(ch) != -1))
             return true;
         return false;
     }
 
-    private static boolean IsOperator(String сh) { //метод возвращает true, если проверяемый символ - оператор
+    private static boolean IsOperator(String сh) { 
         if (("+-/*".indexOf(сh) != -1))
             return true;
         return false;
     }
 
-    private static int GetPriority(String ch) { //метод возврацения приоритета
+    private static int GetPriority(String ch) {
         switch (ch) {
             case "(":
                 return 1;
             case ")":
                 return 2;
             case "+":
-<<<<<<< HEAD
-                return 3;
             case "-":
                 return 3;
             case "*":
-                return 4;
-=======
-            case "-":
-                return 3;
-            case "*":
->>>>>>> b360a9c8a03a0fd6fc229eeb8faebb87ab1e58b2
             case "/":
                 return 4;
             default:
@@ -189,9 +145,6 @@ public class Calculator {
         }
         return true;
     }
-<<<<<<< HEAD
-}
-=======
 
 }
->>>>>>> b360a9c8a03a0fd6fc229eeb8faebb87ab1e58b2
+
