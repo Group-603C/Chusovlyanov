@@ -29,7 +29,7 @@ public class Calculator {
 
             else if (priority == 2) {//если скобка закрывается
                 String symbol = (String) stack.pop();
-                while (symbol != "(" && !stack.empty()) { //пока не окрывающияся скобка или не конец стека
+                while (GetPriority(symbol)!=1 && !stack.empty()) { //пока не окрывающияся скобка или не конец стека
                     result.add(symbol);//записываем операции в строку
                     symbol = (String) stack.pop();
                 }
