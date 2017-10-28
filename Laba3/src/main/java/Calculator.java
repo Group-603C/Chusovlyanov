@@ -17,6 +17,7 @@ public class Calculator {
         Stack stack = new Stack();
         int priority;
         for (String i : arrayList) {
+<<<<<<< HEAD
             priority = GetPriority(i);
 
             if (priority == 0) {
@@ -51,6 +52,41 @@ public class Calculator {
         return result;//возвращаем выражение в постфиксной записи
     }
 
+=======
+            priority = GetPriority(i);//находим приоритет символа
+
+            if (priority == 0) {//Если символ цифра или равно
+                result.add(i);
+            }
+
+            else if (priority == 1) { //если скобка открывается
+                stack.push(i);//добавляем к стек
+            }
+
+            else if (priority == 2) {//если скобка закрывается
+                String symbol = (String) stack.pop();
+                while (GetPriority(symbol)!=1 && !stack.empty()) { //пока не окрывающияся скобка или не конец стека
+                    result.add(symbol);//записываем операции в строку
+                    symbol = (String) stack.pop();
+                }
+            }
+
+            else if (IsOperator(i)) {//если  +-/*
+                while (!stack.empty() && GetPriority((String) stack.peek()) >= priority) {//пока не конец стека и приоритет оператора в стеке больше оператора в строке
+                    result.add((String) stack.pop());//извлекаем из стека в строку
+                }
+                stack.push(i);//заносим новый оператор в строку
+            }
+        }
+
+        while (!stack.empty()) {//забираем последнии символы из стека
+            result.add((String) stack.pop());
+        }
+
+        return result;//возвращаем выражение в постфиксной записи
+    }
+
+>>>>>>> b360a9c8a03a0fd6fc229eeb8faebb87ab1e58b2
     private static ArrayList StringtoList(String ch) {
         ArrayList<String> result = new ArrayList();
         char[] input = ch.toCharArray();
@@ -128,11 +164,17 @@ public class Calculator {
             case ")":
                 return 2;
             case "+":
+<<<<<<< HEAD
                 return 3;
             case "-":
                 return 3;
             case "*":
                 return 4;
+=======
+            case "-":
+                return 3;
+            case "*":
+>>>>>>> b360a9c8a03a0fd6fc229eeb8faebb87ab1e58b2
             case "/":
                 return 4;
             default:
@@ -147,4 +189,9 @@ public class Calculator {
         }
         return true;
     }
+<<<<<<< HEAD
 }
+=======
+
+}
+>>>>>>> b360a9c8a03a0fd6fc229eeb8faebb87ab1e58b2
