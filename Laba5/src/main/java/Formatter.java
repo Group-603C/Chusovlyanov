@@ -4,7 +4,10 @@ import java.util.ArrayList;
 
 public class Formatter {
 
-    static String build(String formatString, Object... arguments){
+    public static String build(String formatString, Object... arguments) {
+        if (formatString == null || formatString.equals("")) {
+            return "";
+        }
         ArrayList<Object> argumentSet = convertToList(formatString, arguments);
         return convertToResult(argumentSet);
     }
@@ -19,14 +22,15 @@ public class Formatter {
         return result.toString();
     }
 
-    private static ArrayList<Object> convertToList(String formatString, Object... arguments){
+    private static ArrayList<Object> convertToList(String formatString, Object... arguments)throws NumberFormatException,IndexOutOfBoundsException{
 
         ArrayList<Object> argumentSet = new ArrayList<>();
         StringBuilder partOfLine = new StringBuilder();
         boolean isArgument=false;
-        int index=0;
+        String index=new String();
 
         for (char i:formatString.toCharArray()){
+
             if(i=='{'){
                 isArgument=true;
                 argumentSet.add(partOfLine.toString());
@@ -35,9 +39,26 @@ public class Formatter {
 
             else if(i=='}'&&isArgument){
                 isArgument=false;
-                argumentSet.add(arguments[index]);
-                index++;
+                try {
+                    argumentSet.add(arguments[Integer.parseInt(index)]);
+                }
+                catch (NumberFormatException e){
+                    argumentSet.add("{}");
+                    System.out.println("The number of the argument is not known");
+                }
+                catch (IndexOutOfBoundsException e){
+                    argumentSet.add("{"+index+"}");
+                    System.out.println("There is no such argument");
+                }
+                finally {
+                    index = "";
+                }
             }
+
+            else if (isArgument&&(i>='0'&&i<='9')){
+                index+=i;
+            }
+
             else if(!isArgument){
                 partOfLine.append(i);
             }
