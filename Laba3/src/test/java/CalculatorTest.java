@@ -46,8 +46,4 @@ public class CalculatorTest {
         double actual=Calculator.Calculate(null);
         assertEquals("Return null", 0, actual, 0.001);
     }
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> b360a9c8a03a0fd6fc229eeb8faebb87ab1e58b2
+
