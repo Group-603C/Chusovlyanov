@@ -54,7 +54,10 @@ public class Formatter {
                     index = "";
                 }
             }
-
+            else if (isArgument&&(i<'0'||i>'9')){
+                isArgument=false;
+                argumentSet.add("{"+i);
+            }
             else if (isArgument&&(i>='0'&&i<='9')){
                 index+=i;
             }
