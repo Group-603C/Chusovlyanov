@@ -13,15 +13,15 @@ public class FileAnalizer {
     public FileAnalizer(String path) throws FileNotFoundException {
 
         exists(path);
-        StringBuilder dataStream = new StringBuilder();
+        String dataStream = new String();
         try {
             BufferedReader input = new BufferedReader(new InputStreamReader(new FileInputStream(path), "Cp1251"));
             try {
                 String line;
 
                 while ((line = input.readLine()) != null) {
-                    dataStream.append(line);
-                    dataStream.append("\n");
+                    dataStream+=line;
+                    dataStream+= "\n";
                 }
 
             }
@@ -33,7 +33,7 @@ public class FileAnalizer {
             throw new RuntimeException(e);
         }
 
-        text = dataStream.toString().toCharArray();
+        text = dataStream.toCharArray();
     }
 
     private static void exists(String fileName) throws FileNotFoundException {
