@@ -33,13 +33,15 @@ public class Point {
     }
 
     public PolarPoint toPolar() {
-        PolarPoint point = new PolarPoint(x, y);
-        return point.toCartesian();
+        double rho = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+        double phi = Math.atan(this.y / this.x);
+        return new PolarPoint(rho,phi);
     }
 
     public CylindricalPoint toCylindrical() {
-        CylindricalPoint point = new CylindricalPoint(x, y, z);
-        return point.toCaresian();
+        double rho = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+        double phi = Math.atan(this.y / this.x);
+        return new CylindricalPoint(rho,phi,this.z);
     }
 
     public static boolean isOneStraightLine(Point first, Point send, Point third) {

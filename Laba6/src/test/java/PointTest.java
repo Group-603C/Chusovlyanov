@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class PointTest {
     @org.junit.Test
-    public void df() throws Exception {
+    public void getX() throws Exception {
         Point point = new Point(1, 2);
         double actual = point.getX();
         double expected =1;

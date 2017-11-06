@@ -17,11 +17,9 @@ public class PolarPoint {
         return this.phi;
     }
 
-    public PolarPoint toCartesian() {
-        double rho = Math.sqrt(Math.pow(this.rho, 2) + Math.pow(this.phi, 2));
-        double phi = Math.atan(this.phi / this.rho);
-        this.rho = rho;
-        this.phi = phi;
-        return this;
+    public Point toCartesian() {
+        double x =this.rho*Math.cos(this.phi);
+        double y = this.rho*Math.sin(this.phi);
+        return new Point(x,y);
     }
 }
