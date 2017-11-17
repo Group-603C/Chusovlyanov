@@ -6,6 +6,9 @@ import java.util.Stack;
 public class Calculator {
 
     public static double Calculate(String expresion) {
+        if(expresion==null||expresion==""){
+            return 0;
+        }
         ArrayList<String> postfix = GetExpression(expresion);
         double rezult = Counting(postfix);
         return rezult;

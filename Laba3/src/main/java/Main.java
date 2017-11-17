@@ -46,10 +46,15 @@ public class Main {
 
             try {
                 int count = 0;
+                char flag =0;
                 while (count < input.length()) {
                     if ("0123456789()-+/*".indexOf(input.charAt(count)) == -1) {
                         throw new Error();
                     }
+                    if("*-+/".indexOf(input.charAt(count))!=-1&&input.charAt(count)==flag){
+                        throw new Error();
+                    }
+                    flag=input.charAt(count);
                     count++;
                 }
                 if (!IsCorrect(input)) {
@@ -59,7 +64,7 @@ public class Main {
                 return input;
 
             } catch (Error e) {
-                System.out.println("Ошибка,введено не числовое значение!");
+                System.out.println("Ошибка,введено не коректная строка!");
             }
         }
     }
