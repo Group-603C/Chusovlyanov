@@ -6,7 +6,7 @@ public class Formatter {
 
     public static String build(String formatString, Object... arguments) {
         if (formatString == null || formatString.equals("")) {
-            return "";
+            return null;
         }
         ArrayList<Object> argumentSet = convertToList(formatString, arguments);
         return convertToResult(argumentSet);
@@ -27,7 +27,7 @@ public class Formatter {
         ArrayList<Object> argumentSet = new ArrayList<>();
         StringBuilder partOfLine = new StringBuilder();
         boolean isArgument=false;
-        String index=new String();
+        String index= "";
 
         for (char i:formatString.toCharArray()){
 
@@ -56,7 +56,7 @@ public class Formatter {
             }
             else if (isArgument&&(i<'0'||i>'9')){
                 isArgument=false;
-                argumentSet.add("{"+i);
+                argumentSet.add("{"+index+i);
             }
             else if (isArgument&&(i>='0'&&i<='9')){
                 index+=i;

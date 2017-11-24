@@ -1,8 +1,6 @@
 package test.java;
 
 import main.java.Formatter;
-import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class FormatterTest {
@@ -43,7 +41,7 @@ public class FormatterTest {
         assertEquals("Reverse order ", expected, actual);
 
         actual = Formatter.build("", "String", 20);
-        expected = "";
+        expected = null;
         assertEquals("Empty line ", expected, actual);
 
         actual = Formatter.build("There must be number and symbols");

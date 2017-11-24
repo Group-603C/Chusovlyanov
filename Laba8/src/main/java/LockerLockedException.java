@@ -1,7 +1,7 @@
 package main.java;
 
 public class LockerLockedException extends Throwable {
-    public LockerLockedException(String error) {
+    public LockerLockedException() {
         super("Box locked");
     }
 }

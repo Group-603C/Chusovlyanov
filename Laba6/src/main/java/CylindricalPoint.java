@@ -1,22 +1,19 @@
 package main.java;
 
-public class CylindricalPoint {
-    private double rho;
-    private double phi;
+public class CylindricalPoint extends PolarPoint {
     private double z;
 
     public CylindricalPoint(double rho, double phi, double z) {
-        this.rho = rho;
-        this.phi = phi;
+        super(rho, phi);
         this.z = z;
     }
 
     public double getRho() {
-        return this.rho;
+        return super.getRho();
     }
 
     public double getPhi() {
-        return this.phi;
+        return super.getPhi();
     }
 
     public double getZ() {
@@ -24,8 +21,8 @@ public class CylindricalPoint {
     }
 
     public Point toCartesian() {
-        double x =this.rho*Math.cos(this.phi);
-        double y = this.rho*Math.sin(this.phi);
+        double x =super.getRho()*Math.cos(super.getPhi());
+        double y = super.getRho()*Math.sin(super.getPhi());
         return new Point(x,y,this.z);
     }
 }

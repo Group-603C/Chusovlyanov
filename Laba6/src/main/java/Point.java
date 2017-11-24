@@ -3,11 +3,12 @@ package main.java;
 public class Point {
     private double x;
     private double y;
-    private double z = 0;
+    private double z;
 
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
+        this.z = 0;
     }
 
     public Point(double x, double y, double z) {
@@ -29,23 +30,23 @@ public class Point {
     }
 
     public double distanceTo(Point point) {
-        return Math.sqrt(Math.pow(point.x - this.x, 2) + Math.pow(point.y - this.y, 2) + Math.pow(point.z - this.z, 2));
+        return Math.sqrt(Math.pow(point.x - this.x, 2.0) + Math.pow(point.y - this.y, 2.0) + Math.pow(point.z - this.z, 2.0));
     }
 
     public PolarPoint toPolar() {
-        double rho = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
-        double phi = Math.atan(this.y / this.x);
-        return new PolarPoint(rho,phi);
+        double rho = Math.sqrt(Math.pow(this.x, 2.0) + Math.pow(this.y, 2.0));
+        double phi = convertToPhi();
+        return new PolarPoint(rho, phi);
     }
 
     public CylindricalPoint toCylindrical() {
-        double rho = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
-        double phi = Math.atan(this.y / this.x);
-        return new CylindricalPoint(rho,phi,this.z);
+        double rho = Math.sqrt(Math.pow(this.x, 2.0) + Math.pow(this.y, 2.0));
+        double phi = convertToPhi();
+        return new CylindricalPoint(rho, phi, this.z);
     }
 
     public static boolean isOneStraightLine(Point first, Point send, Point third) {
-        if ((1 / 2 * (first.x - third.x) * (send.y - third.y) - (send.x - third.x) * (first.y - third.y)) == 0) {
+        if ( (first.x - third.x) * (send.y - third.y) - (send.x - third.x) * (first.y - third.y) == 0) {
             return true;
         }
         return false;
@@ -68,5 +69,21 @@ public class Point {
         return false;
     }
 
+    private double convertToPhi() {
+
+        if (x < 0) {
+            return Math.atan2(y, x) + Math.PI;
+        } else if (x > 0 && y < 0) {
+            return Math.atan2(y, x) + 2 * Math.PI;
+        } else if (x > 0 && y >= 0) {
+            return Math.atan2(y, x);
+        } else if (x == 0 && y > 0) {
+            return Math.PI / 2;
+        } else if (x == 0 && y < 0) {
+            return 3 * Math.PI / 2;
+        }
+
+        return -1d;
+    }
 
 }

@@ -10,26 +10,24 @@ public class LockerTest {
 
     @Test(expected = LockerLockedException.class)
     public void lock() throws Exception, LockerLockedException {
-        Locker in = new Locker();
-        in.setValue(10);
+        Locker in = new Locker(10);
         in.lock();
         in.setValue(15);
     }
+
     @org.junit.Test
     public void setValue() throws Exception, LockerLockedException {
-        Locker in = new Locker();
-        in.setValue(10);
-        assertEquals(10,in.getValue());
+        Locker in = new Locker(10);
+        assertEquals(10, in.getValue());
     }
 
     @org.junit.Test
     public void unlock() throws Exception, LockerLockedException {
-        Locker in = new Locker();
-        in.setValue(10);
+        Locker in = new Locker(10);
         in.lock();
         in.unlock();
         in.setValue(15);
-        assertEquals(15,in.getValue());
+        assertEquals(15, in.getValue());
     }
 
 }

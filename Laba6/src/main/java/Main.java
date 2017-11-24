@@ -1,13 +1,14 @@
 package main.java;
 
+import static main.java.Point.isOnePlane;
 import static main.java.Point.isOneStraightLine;
 
 public class Main {
     public static void main(String[] args) {
-        Point a = new Point(1, 2, -1);
-        Point b = new Point(0, 1, 5);
-        Point c = new Point(-1, 2, 1);
-        Point d = new Point(2, 1, 3);
-        System.out.println(d.isOnePlane(a, b, c, d));
+        Point b = new Point(3,7,5);
+        Point c = new Point(7,7,7);
+        Point f = new Point(5,5,5);
+        Point d = new Point(5,5,6);
+        System.out.println(isOnePlane(b,c,f,d));
     }
 }
