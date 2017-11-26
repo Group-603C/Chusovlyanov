@@ -1,7 +1,6 @@
 package main.java;
 
 import static main.java.Point.isOnePlane;
-import static main.java.Point.isOneStraightLine;
 
 public class Main {
     public static void main(String[] args) {

@@ -2,14 +2,15 @@ package main.java;
 
 public class Locker {
     private int value;
-    private boolean look;
+    private boolean lock;
 
     public Locker(int value) {
         this.value = value;
+        this.lock=false;
     }
 
     public void setValue(int value) throws LockerLockedException {
-        if (look == false) {
+        if (!lock) {
             this.value = value;
         } else {
             throw new LockerLockedException();
@@ -22,11 +23,11 @@ public class Locker {
     }
 
     public void lock() {
-        look = true;
+        lock = true;
     }
 
     public void unlock() {
-        look = false;
+        lock = false;
     }
 
 

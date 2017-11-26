@@ -21,8 +21,8 @@ public class CylindricalPoint extends PolarPoint {
     }
 
     public Point toCartesian() {
-        double x =super.getRho()*Math.cos(super.getPhi());
-        double y = super.getRho()*Math.sin(super.getPhi());
-        return new Point(x,y,this.z);
+        double x = super.getRho() * Math.cos(super.getPhi());
+        double y = super.getRho() * Math.sin(super.getPhi());
+        return new Point(x, y, this.z);
     }
 }

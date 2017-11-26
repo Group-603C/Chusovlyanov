@@ -46,7 +46,7 @@ public class Point {
     }
 
     public static boolean isOneStraightLine(Point first, Point send, Point third) {
-        if ( (first.x - third.x) * (send.y - third.y) - (send.x - third.x) * (first.y - third.y) == 0) {
+        if ((first.x - third.x) * (send.y - third.y) - (send.x - third.x) * (first.y - third.y) == 0) {
             return true;
         }
         return false;

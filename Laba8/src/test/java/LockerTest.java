@@ -9,25 +9,25 @@ import static org.junit.Assert.*;
 public class LockerTest {
 
     @Test(expected = LockerLockedException.class)
-    public void lock() throws Exception, LockerLockedException {
-        Locker in = new Locker(10);
-        in.lock();
-        in.setValue(15);
+    public void lock() throws LockerLockedException {
+        Locker number = new Locker(10);
+        number.lock();
+        number.setValue(15);
     }
 
     @org.junit.Test
-    public void setValue() throws Exception, LockerLockedException {
-        Locker in = new Locker(10);
-        assertEquals(10, in.getValue());
+    public void setValue() throws  LockerLockedException {
+        Locker number = new Locker(10);
+        assertEquals(10, number.getValue());
     }
 
     @org.junit.Test
-    public void unlock() throws Exception, LockerLockedException {
-        Locker in = new Locker(10);
-        in.lock();
-        in.unlock();
-        in.setValue(15);
-        assertEquals(15, in.getValue());
+    public void unlock() throws  LockerLockedException {
+        Locker number = new Locker(10);
+        number.lock();
+        number.unlock();
+        number.setValue(15);
+        assertEquals(15, number.getValue());
     }
 
 }
