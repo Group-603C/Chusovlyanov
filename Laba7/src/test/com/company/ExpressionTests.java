@@ -1,9 +1,9 @@
 package test.com.company;
 
 import com.company.IExpression;
-import com.company.binary.*;
-import com.company.tools.*;
-import com.company.unary.*;
+import com.company.Binary.*;
+import com.company.Tools.*;
+import com.company.Unary.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -34,6 +34,19 @@ public class ExpressionTests {
         //Multi
         expression = new Addition("123.123", 1.2, "1.1", 42, "0");
         assertEquals(167.423, expression.calculate(), eps);
+    }
+
+    @Test
+    public void division() {
+
+        expression = new Division("25.5",5);
+        assertEquals(5.1, expression.calculate(), eps);
+
+        expression = new Division("-12.0", 4);
+        assertEquals(-3.0, expression.calculate(), eps);
+
+        expression = new Division("42.4", 0);
+        assertTrue(Double.isNaN(expression.calculate()));
     }
 
     @Test
@@ -76,6 +89,24 @@ public class ExpressionTests {
         expression = new Power(-16.81, 1.0 / 2);
         assertTrue(Double.isNaN(expression.calculate()));
     }
+    @Test
+    public void rest() {
+
+        expression = new Rest("7.0", 2);
+        assertEquals(1.0, expression.calculate(), eps);
+
+        expression = new Rest("-14.0", 3);
+        assertEquals(1.0, expression.calculate(), eps);
+
+        expression = new Rest("14.0", -3);
+        assertEquals(2.0, expression.calculate(), eps);
+
+        expression = new Rest("-121.0", -4);
+        assertEquals(3.0, expression.calculate(), eps);
+
+        expression = new Rest("4.2", 0);
+        assertTrue(Double.isNaN(expression.calculate()));
+    }
 
     @Test
     public void subtraction() {
@@ -94,6 +125,21 @@ public class ExpressionTests {
         //Negative
         expression = new Negative(-10.1);
         assertEquals(10.1, expression.calculate(), eps);
+    }
+    @Test
+    public void absolute() {
+
+        expression = new Absolute("-105.0");
+        assertEquals(105.0, expression.calculate(), eps);
+    }
+    @Test
+    public void square() {
+
+        expression = new Square("12.0");
+        assertEquals(144.0, expression.calculate(), eps);
+
+        expression = new Square("-8.0");
+        assertEquals(64.0, expression.calculate(), eps);
     }
 
     @Test

@@ -1,8 +1,8 @@
-package com.company.binary;
+package com.company.Binary;
 
 import com.company.IExpression;
-import com.company.tools.CacheCalculation;
-import com.company.tools.CacheValue;
+import com.company.Tools.CacheCalculation;
+import com.company.Tools.CacheValue;
 
 public class BinaryExpression implements IExpression {
 

@@ -1,7 +1,7 @@
-package com.company.tools;
+package com.company.Tools;
 
 import com.company.IExpression;
-import com.company.unary.Value;
+import com.company.Unary.Value;
 
 import java.util.function.Supplier;
 

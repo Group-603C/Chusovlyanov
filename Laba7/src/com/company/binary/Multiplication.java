@@ -1,8 +1,8 @@
-package com.company.binary;
+package com.company.Binary;
 
 import com.company.IExpression;
-import com.company.tools.CacheCalculation;
-import com.company.unary.Value;
+import com.company.Tools.CacheCalculation;
+import com.company.Unary.Value;
 
 public class Multiplication extends BinaryExpression implements IExpression {
 

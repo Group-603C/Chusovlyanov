@@ -1,7 +1,7 @@
-package com.company.binary;
+package com.company.Binary;
 
 import com.company.IExpression;
-import com.company.tools.CacheCalculation;
+import com.company.Tools.CacheCalculation;
 
 public class Subtraction extends BinaryExpression implements IExpression {
 

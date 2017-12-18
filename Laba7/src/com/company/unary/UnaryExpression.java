@@ -1,8 +1,8 @@
-package com.company.unary;
+package com.company.Unary;
 
 import com.company.IExpression;
-import com.company.tools.CacheCalculation;
-import com.company.tools.CacheValue;
+import com.company.Tools.CacheCalculation;
+import com.company.Tools.CacheValue;
 
 public class UnaryExpression implements IExpression {
 
