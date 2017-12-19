@@ -16,10 +16,6 @@ public class Rest extends BinaryExpression implements IExpression {
                     double rounding = Math.floor(divider / dividend);
                     return divider - (rounding * dividend);
                 }
-                if(divider<0 && dividend<0){
-                    double rounding = Math.round(a /dividend);
-                    return divider - (rounding * dividend);
-                }
                 return divider % dividend;
             }
             return Double.NaN;
