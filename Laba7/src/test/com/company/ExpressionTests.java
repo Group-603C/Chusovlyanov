@@ -125,6 +125,8 @@ public class ExpressionTests {
     }
     @Test
     public void absolute() {
+        expression = new Absolute("105.0");
+        assertEquals(105.0, expression.calculate(), eps);
 
         expression = new Absolute("-105.0");
         assertEquals(105.0, expression.calculate(), eps);
