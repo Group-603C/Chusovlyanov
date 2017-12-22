@@ -101,9 +101,6 @@ public class ExpressionTests {
         expression = new Rest("14.0", -3);
         assertEquals(2.0, expression.calculate(), eps);
 
-        expression = new Rest("-121.0", -4);
-        assertEquals(3.0, expression.calculate(), eps);
-
         expression = new Rest("4.2", 0);
         assertTrue(Double.isNaN(expression.calculate()));
     }
@@ -128,6 +125,8 @@ public class ExpressionTests {
     }
     @Test
     public void absolute() {
+        expression = new Absolute("105.0");
+        assertEquals(105.0, expression.calculate(), eps);
 
         expression = new Absolute("-105.0");
         assertEquals(105.0, expression.calculate(), eps);
